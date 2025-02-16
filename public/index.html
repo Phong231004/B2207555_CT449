@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thêm Sách</title>
+  <style>
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    table, th, td { border: 1px solid black; }
+    th, td { padding: 8px; text-align: left; }
+    .btn { margin-top: 20px; padding: 10px 20px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
+    .btn:hover { background-color: #45a049; }
+  </style>
+  <!-- Thêm thư viện SheetJS để xuất chức năng Excel -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.1/xlsx.full.min.js"></script>
+</head>
+<body>
+  <h1>Thêm Sách Mới</h1>
+  <form id="bookForm">
+    <label for="Ma_Sach">Mã sách:</label>
+    <input type="text" id="Ma_Sach" name="Ma_Sach" required><br><br>
+
+    <label for="Ten_Sach">Tên Sách:</label>
+    <input type="text" id="Ten_Sach" name="Ten_Sach" required><br><br>
+
+    <label for="Don_Gia">Đơn Giá:</label>
+    <input type="text" id="Don_Gia" name="Don_Gia" required><br><br>
+
+    <!-- Bỏ trường Số quyển (SOQUYEN) -->
+    <!-- <label for="So_Quyen">Số quyển:</label>
+    <input type="number" id="So_Quyen" name="So_Quyen" required><br><br> -->
+
+    <label for="Nam_Xuat_Ban">Năm Xuất Bản:</label>
+    <input type="text" id="Nam_Xuat_Ban" name="Nam_Xuat_Ban" required><br><br>
+
+    <label for="Ma_Nha_Xuat_Ban">Mã Nhà Xuất Bản:</label>
+    <input type="text" id="Ma_Nha_Xuat_Ban" name="Ma_Nha_Xuat_Ban" required><br><br>
+
+    <label for="Tac_Gia">Tác Giả:</label>
+    <input type="text" id="Tac_Gia" name="Tac_Gia" required><br><br>
+
+    <button type="submit">Thêm Sách</button>
+  </form>
+
+  <!-- Bảng thông tin các sách -->
+  <h2>Danh Sách Sách</h2>
+  <table id="bookTable">
+    <thead>
+      <tr>
+        <th>MÃ SÁCH</th>
+        <th>TÊN SÁCH</th>
+        <th>ĐƠN GIÁ</th>
+        <th>SỐ QUYỂN</th>
+        <th>NĂM XUẤT BẢN</th>
+        <th>MANXB</th>
+        <th>TÁC GIẢ</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Các sách sẽ được hiển thị ở đây -->
+    </tbody>
+  </table>
+
+  <!-- Nút xuất Excel -->
+  <button class="btn" id="exportBtn">Xuất Excel</button>
+
+  <script>
+    const form = document.getElementById('bookForm');
+    const bookTable = document.getElementById('bookTable').getElementsByTagName('tbody')[0];
+
+    // Hàm để tải danh sách và hiển thị bảng
+    async function loadBooks() {
+      try {
+        const response = await fetch('/api/books'); // Lấy danh sách từ API
+        if (response.ok) {
+          const books = await response.json();
+          // Xóa các hàng cũ trong bảng
+          bookTable.innerHTML = '';
+          // Thêm sách vào bảng
+          books.forEach(book => {
+            const row = bookTable.insertRow();
+            row.innerHTML = `
+              <td>${book.MASACH}</td>
+              <td>${book.TENSACH}</td>
+              <td>${book.DONGIA}</td>
+              <td>${book.SOQUYEN}</td>
+              <td>${book.NHAXUATBAN}</td>
+              <td>${book.MANXB}</td>
+              <td>${book.TACGIA}</td>
+            `;
+          });
+        } else {
+          alert('Không thể lấy danh sách.');
+        }
+      } catch (error) {
+        console.error('Lỗi khi tải danh sách:', error);
+        alert('Có thể xảy ra lỗi khi tải danh sách.');
+      }
+    }
+
+    // Gọi hàm LoadBooks khi tải
+    loadBooks();
+
+    // Xử lý sự kiện submit form
+    form.addEventListener('submit', async function (event) {
+      event.preventDefault(); // Mặc định dừng gửi form
+      const formData = new FormData(form);
+      const bookData = {
+        MASACH: formData.get('Ma_Sach'),
+        TENSACH: formData.get('Ten_Sach'),
+        DONGIA: formData.get('Don_Gia'),
+        SOQUYEN: 1, // Gán số quyển mặc định là 1
+        NHAXUATBAN: formData.get('Nam_Xuat_Ban'),
+        MANXB: formData.get('Ma_Nha_Xuat_Ban'),
+        TACGIA: formData.get('Tac_Gia'),
+      };
+
+      try {
+        const response = await fetch('/api/books', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(bookData),
+        });
+
+        if (response.ok) {
+          alert('Sách đã được tạo thành công!');
+          loadBooks(); // Tải lại danh sách sau khi thêm
+        } else {
+          const errorData = await response.json();
+          alert('Lỗi khi tạo sách: ' + errorData.message);
+        }
+      } catch (error) {
+        console.error('Lỗi khi gửi yêu cầu:', error);
+        alert('Có thể xảy ra lỗi khi gửi yêu cầu.');
+      }
+    });
+
+    // Hàm xuất danh sách sách thành Excel
+    document.getElementById('exportBtn').addEventListener('click', function () {
+      const table = document.getElementById('bookTable');
+      const wb = XLSX.utils.table_to_book(table, { sheet: "Books" });
+      XLSX.writeFile(wb, "DanhSachSach.xlsx");
+    });
+  </script>
+</body>
+</html>
