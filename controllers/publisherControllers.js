@@ -2,11 +2,7 @@ const Publisher = require('../models/Publisher');
 
 // Thêm NXB mới
 module.exports.createPublisher = async (req, res) => {
-    const { 
-        MANXB,
-        TENNXB,
-        DIACHI,
-    } = req.body;
+  const { MANXB, TENNXB, DIACHI } = req.body;
 
   // Kiểm tra dữ liệu yêu cầu
   if (!MANXB || !TENNXB || !DIACHI) {
@@ -22,9 +18,9 @@ module.exports.createPublisher = async (req, res) => {
 
     // Tạo NXB mới
     const newPublisher = new Publisher({
-        MANXB,
-        TENNXB,
-        DIACHI,
+      MANXB,
+      TENNXB,
+      DIACHI,
     });
 
     // Lưu NXB vào MongoDB
@@ -41,7 +37,7 @@ module.exports.createPublisher = async (req, res) => {
 // Lấy tất cả NXB
 module.exports.getAllPublisher = async (req, res) => {
   try {
-    const   publisherList = await Publisher.find();
+    const publisherList = await Publisher.find();
     if (!publisherList || publisherList.length === 0) {
       return res.status(404).json({ message: 'Không có NXB nào trong cơ sở dữ liệu.' });
     }

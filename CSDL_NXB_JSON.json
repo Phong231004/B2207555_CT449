@@ -1,0 +1,37 @@
+[
+    {
+        "_id": "67b41b86446032c34b19e105",
+        "MANXB": "NXBDHCT",
+        "TENNXB": "Nhà xuất bản Đại Học Cần Thơ",
+        "DIACHI": "3/2 - Xuân Khánh - Ninh Kiều - Cần Thơ",
+        "__v": 0
+    },
+    {
+        "_id": "67b41b86446032c34b19e106",
+        "MANXB": "NXBDHTPHCM",
+        "TENNXB": "Nhà xuất bản Đại Học TP.HCM",
+        "DIACHI": "280 An Dương Vương - Quận 5 - TP.HCM",
+        "__v": 0
+    },
+    {
+        "_id": "67b41b86446032c34b19e107",
+        "MANXB": "NXBDHHN",
+        "TENNXB": "Nhà xuất bản Hà Nội",
+        "DIACHI": "36 Lê Thái Tổ - Hoàn Kiếm - Hà Nội",
+        "__v": 0
+    },
+    {
+        "_id": "67b41b86446032c34b19e108",
+        "MANXB": "NXBVCNTT",
+        "TENNXB": "Nhà xuất bản Viễn thông và Công nghệ thông tin",
+        "DIACHI": "Hà Nội - Việt Nam",
+        "__v": 0
+    },
+    {
+        "_id": "67b41b86446032c34b19e109",
+        "MANXB": "NXBDHDN",
+        "TENNXB": "Nhà xuất bản Đại Học Đà Nẵng",
+        "DIACHI": "41 Lê Duẩn - TP. Đà Nẵng",
+        "__v": 0
+    }
+]

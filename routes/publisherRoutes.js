@@ -4,6 +4,7 @@ const publisherController = require('../controllers/publisherControllers');  // 
 
 // Route POST để thêm NXB mới
 router.post('/', publisherController.createPublisher);
-// Route POST để lấy tất cả các loại NXB có trong hệ thống
+// Route GET để lấy tất cả các loại NXB có trong hệ thống
 router.get('/', publisherController.getAllPublisher);
+
 module.exports = router;

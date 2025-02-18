@@ -6,7 +6,7 @@ module.exports.createStaff = async (req, res) => {
 
   // Kiểm tra dữ liệu yêu cầu
   if (!HoTenNV || !Password || !SoDienThoai) {
-    return res.status(400).json({ message: 'HoTenNV, Passwork và SoDienThoai là bắt buộc.' });
+    return res.status(400).json({ message: 'HoTenNV, Password và SoDienThoai là bắt buộc.' });
   }
 
   try {
@@ -33,7 +33,7 @@ module.exports.createStaff = async (req, res) => {
     res.status(201).send('Nhân viên đã được tạo thành công!');
   } catch (err) {
     console.error('Lỗi khi lưu nhân viên:', err);
-    res.status(500).json({ message: err.message });
+    res.status(500).json({ message: 'Lỗi hệ thống: ' + err.message });
   }
 };
 
@@ -49,4 +49,9 @@ module.exports.getAllStaff = async (req, res) => {
     console.error('Lỗi khi lấy danh sách:', err.message);
     res.status(500).json({ message: 'Có lỗi xảy ra khi lấy danh sách nhân viên.', error: err.message });
   }
+};
+
+// Tìm nhân viên theo mã
+module.exports.findOne = async (query) => {
+  return await Staff.findOne(query);
 };

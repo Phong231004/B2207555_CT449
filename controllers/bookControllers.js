@@ -43,3 +43,7 @@ module.exports.getAllBooks = async (req, res) => {
     res.status(500).json({ message: 'Có lỗi xảy ra khi lấy sách.', error: err.message });
   }
 };
+// Tìm sách
+module.exports.findOne = async (query) => {
+  return await Book.findOne(query);
+}

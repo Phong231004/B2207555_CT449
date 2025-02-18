@@ -59,3 +59,8 @@ module.exports.getAllReader = async (req, res) => {
     res.status(500).json({ message: 'Có lỗi xảy ra khi lấy danh sách đọc giả.', error: err.message });
   }
 };
+// Lấy tất cả đọc giả
+module.exports.findOne = async (query) => {
+  return await Reader.findOne(query);
+}
+

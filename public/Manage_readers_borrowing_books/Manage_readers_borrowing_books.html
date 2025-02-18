@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Theo Dõi Mượn Sách</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container mt-5">
+    <h1 class="text-center">Theo Dõi Mượn Sách</h1>
+    <!-- Form Theo dõi sách -->
+    <form id="transactionsForm">
+      <div class="mb-3">
+        <label for="MADOCGIA" class="form-label">Mã Đọc Giả:</label>
+        <input type="text" id="MADOCGIA" name="MADOCGIA" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label for="MASACH" class="form-label">Mã Sách:</label>
+        <input type="text" id="MASACH" name="MASACH" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label for="MSNV" class="form-label">Mã Nhân Viên:</label>
+        <input type="text" id="MSNV" name="MSNV" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label for="NGAYMUON" class="form-label">Ngày Mượn:</label>
+        <input type="date" id="NGAYMUON" name="NGAYMUON" class="form-control">
+      </div>
+      <div class="mb-3">
+        <label for="NGAYTRA" class="form-label">Ngày Trả:</label>
+        <input type="date" id="NGAYTRA" name="NGAYTRA" class="form-control">
+      </div>
+      <button type="submit" class="btn btn-primary">Thêm Thông Tin Mượn Sách</button>
+    </form>
+
+    <h2 class="mt-5">Danh Sách Quản Lý Mượn Sách</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>MÃ ĐỌC GIẢ</th>
+          <th>MÃ SÁCH</th>
+          <th>MÃ NHÂN VIÊN</th>
+          <th>NGÀY MƯỢN</th>
+          <th>NGÀY TRẢ</th>
+        </tr>
+      </thead>
+      <tbody id="transactionsTable"></tbody>
+    </table>
+
+    <button class="btn btn-success" id="exportBtn">Xuất Excel</button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.1/xlsx.full.min.js"></script>
+  <script>
+    const form = document.getElementById('transactionsForm');
+    const transactionsTable = document.getElementById('transactionsTable');
+
+    // Hàm tải danh sách các giao dịch mượn sách
+    async function loadTransactions() {
+      try {
+        const response = await fetch('/api/transactions');
+        if (response.ok) {
+          const transactions = await response.json();
+          transactionsTable.innerHTML = '';
+          transactions.forEach(transaction => {
+            const row = transactionsTable.insertRow();
+            row.innerHTML = `<td>${transaction.MADOCGIA}</td><td>${transaction.MASACH}</td><td>${transaction.MSNV}</td><td>${transaction.NGAYMUON}</td><td>${transaction.NGAYTRA}</td>`;
+          });
+        } else {
+          alert('Không thể lấy danh sách giao dịch.');
+        }
+      } catch (error) {
+        console.error('Lỗi khi tải danh sách:', error);
+        alert('Có lỗi xảy ra khi tải danh sách.');
+      }
+    }
+
+    // Kiểm tra tính hợp lệ của các mã
+    async function validateData(MADOCGIA, MASACH, MSNV) {
+      try {
+        const readerResponse = await fetch(`/api/reader/${MADOCGIA}`);
+        if (!readerResponse.ok) {
+          alert('Mã Đọc Giả không hợp lệ hoặc không tồn tại!');
+          return false;
+        }
+
+        const bookResponse = await fetch(`/api/books/${MASACH}`);
+        if (!bookResponse.ok) {
+          alert('Mã Sách không hợp lệ hoặc không tồn tại!');
+          return false;
+        }
+
+        const staffResponse = await fetch(`/api/staff/${MSNV}`);
+        if (!staffResponse.ok) {
+          alert('Mã Nhân Viên không hợp lệ hoặc không tồn tại!');
+          return false;
+        }
+
+        return true;
+      } catch (error) {
+        console.error('Lỗi khi kiểm tra dữ liệu:', error);
+        alert('Có lỗi xảy ra khi kiểm tra thông tin.');
+        return false;
+      }
+    }
+
+    // Xử lý sự kiện gửi form
+    form.addEventListener('submit', async function (event) {
+      event.preventDefault();
+      const formData = new FormData(form);
+      const MADOCGIA = formData.get('MADOCGIA');
+      const MASACH = formData.get('MASACH');
+      const MSNV = formData.get('MSNV');
+      let NGAYMUON = formData.get('NGAYMUON');
+      let NGAYTRA = formData.get('NGAYTRA');
+
+      const isValid = await validateData(MADOCGIA, MASACH, MSNV);
+      if (!isValid) return;
+
+      if (!NGAYMUON) {
+        NGAYMUON = new Date().toISOString().split('T')[0]; // Ngày mượn mặc định là ngày hiện tại
+      }
+
+      if (!NGAYTRA) {
+        const NGAYMUONDate = new Date(NGAYMUON);
+        NGAYTRA = new Date(NGAYMUONDate.setDate(NGAYMUONDate.getDate() + 14)).toISOString().split('T')[0]; // Cộng thêm 14 ngày
+      }
+
+      const transactionData = {
+        MADOCGIA,
+        MASACH,
+        MSNV,
+        NGAYMUON,
+        NGAYTRA
+      };
+
+      try {
+        const response = await fetch('/api/transactions', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(transactionData)
+        });
+
+        if (response.ok) {
+          alert('Thông tin mượn sách đã được thêm thành công!');
+          loadTransactions(); // Tải lại danh sách giao dịch
+        } else {
+          const errorData = await response.json();
+          alert('Lỗi khi tạo giao dịch: ' + errorData.message);
+        }
+      } catch (error) {
+        console.error('Lỗi khi gửi yêu cầu:', error);
+        alert('Có lỗi xảy ra khi gửi yêu cầu.');
+      }
+    });
+
+    // Xuất danh sách mượn sách ra Excel
+    document.getElementById('exportBtn').addEventListener('click', function () {
+      const table = document.getElementById('transactionsTable');
+      const wb = XLSX.utils.table_to_book(table, { sheet: 'Transactions' });
+      XLSX.writeFile(wb, 'DanhSachQuanLyMuonSach.xlsx');
+    });
+
+    loadTransactions(); // Tải danh sách giao dịch ngay khi tải trang
+  </script>
+</body>
+</html>
