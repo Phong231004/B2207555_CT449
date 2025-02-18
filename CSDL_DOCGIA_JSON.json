@@ -1,0 +1,222 @@
+[
+  {
+    "_id": "67b3037b9dbbc8379887c779",
+    "MADOCGIA": "DG0001",
+    "HOLOT": "Huỳnh Thanh",
+    "TEN": "Phong",
+    "NGAYSINH": "2004-10-23T00:00:00.000+00:00",
+    "PHAI": "Nam",
+    "DIACHI": "KTX B _ Đại học Cần Thơ _ P.Xuân Khánh _ Q.Ninh Kiều _ TP.Cần Thơ",
+    "DIENTHOAI": "0383054912",
+    "__v": 0
+  },
+  {
+    "_id": "67b3037b9dbbc8379887c780",
+    "MADOCGIA": "DG0002",
+    "HOLOT": "Nguyễn Minh",
+    "TEN": "Hậu",
+    "NGAYSINH": "2003-12-05T00:00:00.000+00:00",
+    "PHAI": "Nam",
+    "DIACHI": "KTX A _ Đại học Cần Thơ _ P.Xuân Khánh _ Q.Ninh Kiều _ TP.Cần Thơ",
+    "DIENTHOAI": "0383054913",
+    "__v": 0
+  },
+  {
+    "_id": "67b3037b9dbbc8379887c781",
+    "MADOCGIA": "DG0003",
+    "HOLOT": "Trần Thị",
+    "TEN": "Lan",
+    "NGAYSINH": "2000-09-17T00:00:00.000+00:00",
+    "PHAI": "Nữ",
+    "DIACHI": "KTX C _ Đại học Cần Thơ _ P.Xuân Khánh _ Q.Ninh Kiều _ TP.Cần Thơ",
+    "DIENTHOAI": "0383054914",
+    "__v": 0
+  },
+  {
+    "_id": "67b3037b9dbbc8379887c782",
+    "MADOCGIA": "DG0004",
+    "HOLOT": "Lê Quang",
+    "TEN": "Duy",
+    "NGAYSINH": "1999-08-22T00:00:00.000+00:00",
+    "PHAI": "Nam",
+    "DIACHI": "KTX D _ Đại học Cần Thơ _ P.Xuân Khánh _ Q.Ninh Kiều _ TP.Cần Thơ",
+    "DIENTHOAI": "0383054915",
+    "__v": 0
+  },
+  {
+    "_id": "67b3037b9dbbc8379887c783",
+    "MADOCGIA": "DG0005",
+    "HOLOT": "Phạm Minh",
+    "TEN": "Nhật",
+    "NGAYSINH": "2001-03-12T00:00:00.000+00:00",
+    "PHAI": "Nam",
+    "DIACHI": "KTX B _ Đại học Cần Thơ _ P.Xuân Khánh _ Q.Ninh Kiều _ TP.Cần Thơ",
+    "DIENTHOAI": "0383054916",
+    "__v": 0
+  },
+  {
+    "_id": "67b3037b9dbbc8379887c784",
+    "MADOCGIA": "DG0006",
+    "HOLOT": "Nguyễn Thiên",
+    "TEN": "Ái",
+    "NGAYSINH": "2000-05-19T00:00:00.000+00:00",
+    "PHAI": "Nữ",
+    "DIACHI": "KTX C _ Đại học Cần Thơ _ P.Xuân Khánh _ Q.Ninh Kiều _ TP.Cần Thơ",
+    "DIENTHOAI": "0383054917",
+    "__v": 0
+  },
+  {
+    "_id": "67b3037b9dbbc8379887c785",
+    "MADOCGIA": "DG0007",
+    "HOLOT": "Võ Minh",
+    "TEN": "Tuấn",
+    "NGAYSINH": "2002-11-08T00:00:00.000+00:00",
+    "PHAI": "Nam",
+    "DIACHI": "KTX A _ Đại học Cần Thơ _ P.Xuân Khánh _ Q.Ninh Kiều _ TP.Cần Thơ",
+    "DIENTHOAI": "0383054918",
+    "__v": 0
+  },
+  {
+    "_id": "67b3037b9dbbc8379887c786",
+    "MADOCGIA": "DG0008",
+    "HOLOT": "Lê Hoàng",
+    "TEN": "Quân",
+    "NGAYSINH": "2001-06-14T00:00:00.000+00:00",
+    "PHAI": "Nam",
+    "DIACHI": "KTX D _ Đại học Cần Thơ _ P.Xuân Khánh _ Q.Ninh Kiều _ TP.Cần Thơ",
+    "DIENTHOAI": "0383054919",
+    "__v": 0
+  },
+  {
+    "_id": "67b3037b9dbbc8379887c787",
+    "MADOCGIA": "DG0009",
+    "HOLOT": "Trần Thị",
+    "TEN": "Linh",
+    "NGAYSINH": "1998-04-30T00:00:00.000+00:00",
+    "PHAI": "Nữ",
+    "DIACHI": "KTX C _ Đại học Cần Thơ _ P.Xuân Khánh _ Q.Ninh Kiều _ TP.Cần Thơ",
+    "DIENTHOAI": "0383054920",
+    "__v": 0
+  },
+  {
+    "_id": "67b3037b9dbbc8379887c788",
+    "MADOCGIA": "DG0010",
+    "HOLOT": "Huỳnh Thị",
+    "TEN": "Trang",
+    "NGAYSINH": "2002-07-24T00:00:00.000+00:00",
+    "PHAI": "Nữ",
+    "DIACHI": "KTX B _ Đại học Cần Thơ _ P.Xuân Khánh _ Q.Ninh Kiều _ TP.Cần Thơ",
+    "DIENTHOAI": "0383054921",
+    "__v": 0
+  },
+  {
+    "_id": "67b3037b9dbbc8379887c789",
+    "MADOCGIA": "DG0011",
+    "HOLOT": "Nguyễn Văn",
+    "TEN": "Sơn",
+    "NGAYSINH": "2001-02-14T00:00:00.000+00:00",
+    "PHAI": "Nam",
+    "DIACHI": "KTX A _ Đại học Cần Thơ _ P.Xuân Khánh _ Q.Ninh Kiều _ TP.Cần Thơ",
+    "DIENTHOAI": "0383054922",
+    "__v": 0
+  },
+  {
+    "_id": "67b3037b9dbbc8379887c790",
+    "MADOCGIA": "DG0012",
+    "HOLOT": "Lê Thị",
+    "TEN": "Hồng",
+    "NGAYSINH": "1999-09-11T00:00:00.000+00:00",
+    "PHAI": "Nữ",
+    "DIACHI": "KTX D _ Đại học Cần Thơ _ P.Xuân Khánh _ Q.Ninh Kiều _ TP.Cần Thơ",
+    "DIENTHOAI": "0383054923",
+    "__v": 0
+  },
+  {
+    "_id": "67b3037b9dbbc8379887c791",
+    "MADOCGIA": "DG0013",
+    "HOLOT": "Võ Quang",
+    "TEN": "Nam",
+    "NGAYSINH": "2000-12-22T00:00:00.000+00:00",
+    "PHAI": "Nam",
+    "DIACHI": "KTX C _ Đại học Cần Thơ _ P.Xuân Khánh _ Q.Ninh Kiều _ TP.Cần Thơ",
+    "DIENTHOAI": "0383054924",
+    "__v": 0
+  },
+  {
+    "_id": "67b3037b9dbbc8379887c792",
+    "MADOCGIA": "DG0014",
+    "HOLOT": "Trần Minh",
+    "TEN": "Khánh",
+    "NGAYSINH": "2002-01-10T00:00:00.000+00:00",
+    "PHAI": "Nam",
+    "DIACHI": "KTX B _ Đại học Cần Thơ _ P.Xuân Khánh _ Q.Ninh Kiều _ TP.Cần Thơ",
+    "DIENTHOAI": "0383054925",
+    "__v": 0
+  },
+  {
+    "_id": "67b3037b9dbbc8379887c793",
+    "MADOCGIA": "DG0015",
+    "HOLOT": "Nguyễn Thị",
+    "TEN": "Mỹ",
+    "NGAYSINH": "2001-11-01T00:00:00.000+00:00",
+    "PHAI": "Nữ",
+    "DIACHI": "KTX D _ Đại học Cần Thơ _ P.Xuân Khánh _ Q.Ninh Kiều _ TP.Cần Thơ",
+    "DIENTHOAI": "0383054926",
+    "__v": 0
+  },
+  {
+    "_id": "67b3037b9dbbc8379887c794",
+    "MADOCGIA": "DG0016",
+    "HOLOT": "Lê Thiện",
+    "TEN": "Lộc",
+    "NGAYSINH": "2000-08-17T00:00:00.000+00:00",
+    "PHAI": "Nam",
+    "DIACHI": "KTX B _ Đại học Cần Thơ _ P.Xuân Khánh _ Q.Ninh Kiều _ TP.Cần Thơ",
+    "DIENTHOAI": "0383054927",
+    "__v": 0
+  },
+  {
+    "_id": "67b3037b9dbbc8379887c795",
+    "MADOCGIA": "DG0017",
+    "HOLOT": "Phan Đức",
+    "TEN": "Tài",
+    "NGAYSINH": "2002-04-05T00:00:00.000+00:00",
+    "PHAI": "Nam",
+    "DIACHI": "KTX C _ Đại học Cần Thơ _ P.Xuân Khánh _ Q.Ninh Kiều _ TP.Cần Thơ",
+    "DIENTHOAI": "0383054928",
+    "__v": 0
+  },
+  {
+    "_id": "67b3037b9dbbc8379887c796",
+    "MADOCGIA": "DG0018",
+    "HOLOT": "Nguyễn Thị",
+    "TEN": "Bích",
+    "NGAYSINH": "1999-12-30T00:00:00.000+00:00",
+    "PHAI": "Nữ",
+    "DIACHI": "KTX B _ Đại học Cần Thơ _ P.Xuân Khánh _ Q.Ninh Kiều _ TP.Cần Thơ",
+    "DIENTHOAI": "0383054929",
+    "__v": 0
+  },
+  {
+    "_id": "67b3037b9dbbc8379887c797",
+    "MADOCGIA": "DG0019",
+    "HOLOT": "Võ Hữu",
+    "TEN": "Phúc",
+    "NGAYSINH": "2001-03-30T00:00:00.000+00:00",
+    "PHAI": "Nam",
+    "DIACHI": "KTX D _ Đại học Cần Thơ _ P.Xuân Khánh _ Q.Ninh Kiều _ TP.Cần Thơ",
+    "DIENTHOAI": "0383054930",
+    "__v": 0
+  },
+  {
+    "_id": "67b3037b9dbbc8379887c798",
+    "MADOCGIA": "DG0020",
+    "HOLOT": "Trần Lê",
+    "TEN": "Hương",
+    "NGAYSINH": "2002-02-16T00:00:00.000+00:00",
+    "PHAI": "Nữ",
+    "DIACHI": "KTX A _ Đại học Cần Thơ _ P.Xuân Khánh _ Q.Ninh Kiều _ TP.Cần Thơ",
+    "DIENTHOAI": "0383054931",
+    "__v": 0
+  }
+]

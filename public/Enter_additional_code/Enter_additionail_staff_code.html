@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thêm Nhân Viên</title>
+  <!-- Thêm liên kết đến Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container mt-5">
+    <h1 class="text-center">Thêm Nhân Viên Mới</h1>
+
+    <!-- Form Thêm Nhân Viên -->
+    <form id="staffForm">
+      <div class="mb-3">
+        <label for="Ma_NV" class="form-label">Mã Viên Nhân:</label>
+        <input type="text" id="Ma_NV" name="Ma_NV" class="form-control" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="HoTenNV" class="form-label">Họ tên nhân viên:</label>
+        <input type="text" id="HoTenNV" name="HoTenNV" class="form-control" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="Password" class="form-label">Password:</label>
+        <input type="password" id="Password" name="Password" class="form-control" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="ChucVu" class="form-label">Chức vụ:</label>
+        <input type="text" id="ChucVu" name="ChucVu" class="form-control" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="DiaChi" class="form-label">Địa chỉ:</label>
+        <input type="text" id="DiaChi" name="DiaChi" class="form-control" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="SoDienThoai" class="form-label">Số điện thoại:</label>
+        <input type="text" id="SoDienThoai" name="SoDienThoai" class="form-control" required>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Thêm Nhân Viên</button>
+    </form>
+
+    <!-- Danh sách nhân viên -->
+    <h2 class="mt-5">Danh Sách Nhân Viên</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>MÃ NHÂN VIÊN</th>
+          <th>HỌ VÀ TÊN</th>
+          <th>PASSWORD</th>
+          <th>CHỨC VỤ</th>
+          <th>ĐỊA CHỈ</th>
+          <th>SỐ ĐIỆN THOẠI</th>
+        </tr>
+      </thead>
+      <tbody id="staffTable">
+        <!-- Các nhân viên sẽ được hiển thị ở đây -->
+      </tbody>
+    </table>
+
+    <!-- Nút xuất Excel -->
+    <button class="btn btn-success" id="exportBtn">Xuất Excel</button>
+  </div>
+
+  <!-- Thêm thư viện Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Thêm thư viện SheetJS để xuất chức năng Excel -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.1/xlsx.full.min.js"></script>
+  <script>
+    const form = document.getElementById('staffForm');
+    const StaffTable = document.getElementById('staffTable');
+
+    // Hàm để tải danh sách nhân viên và hiển thị bảng
+    async function loadStaff() {
+      try {
+        const response = await fetch('/api/staff'); // Lấy danh sách từ API
+        if (response.ok) {
+          const staff = await response.json(); // Dữ liệu nhân viên
+          StaffTable.innerHTML = ''; // Xóa bảng cũ
+          staff.forEach(staff => {
+            const row = StaffTable.insertRow();
+            row.innerHTML = `
+              <td>${staff.MSNV}</td>
+              <td>${staff.HoTenNV}</td>
+              <td>${staff.Password}</td>
+              <td>${staff.ChucVu}</td>
+              <td>${staff.DiaChi}</td>
+              <td>${staff.SodienThoai}</td>
+            `;
+          });
+        } else {
+          alert('Không thể lấy danh sách.');
+        }
+      } catch (error) {
+        console.error('Lỗi khi tải danh sách:', error);
+        alert('Có thể xảy ra lỗi khi tải danh sách.');
+      }
+    }
+
+    // Gọi hàm loadStaff khi tải trang
+    loadStaff();
+
+    // Xử lý sự kiện submit form
+    form.addEventListener('submit', async function (event) {
+      event.preventDefault(); // Dừng gửi form mặc định
+      const formData = new FormData(form);
+      const staffData = {
+        MSNV: formData.get('Ma_NV'),
+        HoTenNV: formData.get('HoTenNV'),
+        Password: formData.get('Password'),
+        ChucVu: formData.get('ChucVu'),
+        DiaChi: formData.get('DiaChi'),
+        SoDienThoai: formData.get('SoDienThoai'),
+      };
+
+      try {
+        const response = await fetch('/api/staff', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(staffData),
+        });
+
+        if (response.ok) {
+          alert('Nhân viên đã được tạo thành công!');
+          loadStaff(); // Tải lại danh sách sau khi thêm
+        } else {
+          const errorData = await response.json();
+          alert('Lỗi khi tạo nhân viên: ' + errorData.message);
+        }
+      } catch (error) {
+        console.error('Lỗi khi gửi yêu cầu:', error);
+        alert('Có thể xảy ra lỗi khi gửi yêu cầu.');
+      }
+    });
+
+    // Hàm xuất danh sách nhân viên thành Excel
+    document.getElementById('exportBtn').addEventListener('click', function () {
+      const table = document.getElementById('staffTable');
+      const wb = XLSX.utils.table_to_book(table, { sheet: "staff" });
+      XLSX.writeFile(wb, "DanhSachNhanVien.xlsx");
+    });
+  </script>
+</body>
+</html>

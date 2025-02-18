@@ -7,6 +7,7 @@ const bookRoutes = require('./routes/bookRoutes');
 const readerRoutes = require('./routes/readerRoutes');
 const staffRoutes = require('./routes/staffRoutes');
 const transactionRoutes = require('./routes/transactionRoutes');
+const publisherRoutes = require("./routes/publisherRoutes")
 
 
 // Kết nối MongoDB
@@ -21,10 +22,22 @@ app.use(express.static('public'));
 
 // Sử dụng router cho các route
 app.use('/api/books', bookRoutes);
+app.use('/api/staff', staffRoutes);
+app.use('/api/reader', readerRoutes);
+app.use('/api/publisher', publisherRoutes);
 
-// Cung cấp file HTML cho trang chủ
-app.post('/', (req, res) => {
-  res.sendFile(__dirname + '/public/index.html');  // Đảm bảo đường dẫn đúng tới file index.html
+// Cung cấp file HTML cho thêm dữ liệu
+app.get('/Enter_additional_code/Enter_additionail_book_code', (req, res) => {
+  res.sendFile(__dirname + '/public/Enter_additional_code/Enter_additionail_book_code.html');  // Đảm bảo đường dẫn đúng tới file index.html
+});
+app.get('/Enter_additional_code/Enter_additionail_staff_code', (req, res) => {
+  res.sendFile(__dirname + '/public/Enter_additional_code/Enter_additionail_staff_code.html');  // Đảm bảo đường dẫn đúng tới file index.html
+});
+app.get('/Enter_additional_code/Enter_additionail_reader_code', (req, res) => {
+  res.sendFile(__dirname + '/public/Enter_additional_code/Enter_additionail_reader_code.html');  // Đảm bảo đường dẫn đúng tới file index.html
+});
+app.get('/Enter_additional_code/Enter_additionail_publisher_code', (req, res) => {
+  res.sendFile(__dirname + '/public/Enter_additional_code/Enter_additionail_publisher_code.html');  // Đảm bảo đường dẫn đúng tới file index.html
 });
 // Port
 const PORT = process.env.PORT || 3000;  // Lấy cổng từ biến môi trường hoặc cổng mặc định

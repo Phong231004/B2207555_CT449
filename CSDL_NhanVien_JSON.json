@@ -1,0 +1,152 @@
+[
+  {
+    "_id": "67b2ba44016f8bd892a14af5",
+    "MSNV": "NV0001",
+    "HoTenNV": "Huỳnh Thanh Phong",
+    "Password": "Ph0ng!@123",
+    "ChucVu": "Nhân Viên",
+    "DiaChi": "3/2 Xuân Khánh Ninh Kiều Cần Thơ",
+    "SoDienThoai": "0385272836",
+    "__v": 0
+  },
+  {
+    "_id": "67b2ba44016f8bd892a14af6",
+    "MSNV": "NV0002",
+    "HoTenNV": "Nguyễn Minh Tuấn",
+    "Password": "Tu@n!2024@#",
+    "ChucVu": "Quản Lý",
+    "DiaChi": "12/5 Đường 3/2, Cần Thơ",
+    "SoDienThoai": "0395872937",
+    "__v": 0
+  },
+  {
+    "_id": "67b2ba44016f8bd892a14af7",
+    "MSNV": "NV0003",
+    "HoTenNV": "Trần Thị Lan",
+    "Password": "L@nh123!@#",
+    "ChucVu": "Nhân Viên",
+    "DiaChi": "56/8 Nguyễn Văn Cừ, Cần Thơ",
+    "SoDienThoai": "0345678989",
+    "__v": 0
+  },
+  {
+    "_id": "67b2ba44016f8bd892a14af8",
+    "MSNV": "NV0004",
+    "HoTenNV": "Lê Quốc Bảo",
+    "Password": "B@o$Qu@ng123",
+    "ChucVu": "Giám Đốc",
+    "DiaChi": "88 Lê Lợi, Cần Thơ",
+    "SoDienThoai": "0901234567",
+    "__v": 0
+  },
+  {
+    "_id": "67b2ba44016f8bd892a14af9",
+    "MSNV": "NV0005",
+    "HoTenNV": "Phan Thị Lan Anh",
+    "Password": "L@n@nh2024#",
+    "ChucVu": "Nhân Viên",
+    "DiaChi": "22 Hoàng Văn Thụ, Cần Thơ",
+    "SoDienThoai": "0351234567",
+    "__v": 0
+  },
+  {
+    "_id": "67b2ba44016f8bd892a14afa",
+    "MSNV": "NV0006",
+    "HoTenNV": "Vũ Hữu Lợi",
+    "Password": "V@#l@123456",
+    "ChucVu": "Nhân Viên",
+    "DiaChi": "12A Trần Hưng Đạo, Cần Thơ",
+    "SoDienThoai": "0334567890",
+    "__v": 0
+  },
+  {
+    "_id": "67b2ba44016f8bd892a14afb",
+    "MSNV": "NV0007",
+    "HoTenNV": "Ngô Minh Nhật",
+    "Password": "N!ht1234@#",
+    "ChucVu": "Nhân Viên",
+    "DiaChi": "14/3 Lý Tự Trọng, Cần Thơ",
+    "SoDienThoai": "0382938475",
+    "__v": 0
+  },
+  {
+    "_id": "67b2ba44016f8bd892a14afc",
+    "MSNV": "NV0008",
+    "HoTenNV": "Phạm Hoài Nam",
+    "Password": "H!@i!Nam45",
+    "ChucVu": "Quản Lý",
+    "DiaChi": "17 Lê Bình, Cần Thơ",
+    "SoDienThoai": "0339876543",
+    "__v": 0
+  },
+  {
+    "_id": "67b2ba44016f8bd892a14afd",
+    "MSNV": "NV0009",
+    "HoTenNV": "Trương Thị Mai",
+    "Password": "M@i!Trung987",
+    "ChucVu": "Nhân Viên",
+    "DiaChi": "7/1 Hòa Bình, Cần Thơ",
+    "SoDienThoai": "0398765432",
+    "__v": 0
+  },
+  {
+    "_id": "67b2ba44016f8bd892a14afe",
+    "MSNV": "NV0010",
+    "HoTenNV": "Đỗ Minh Thiện",
+    "Password": "M!nht@ien789",
+    "ChucVu": "Nhân Viên",
+    "DiaChi": "12 Nguyễn An Ninh, Cần Thơ",
+    "SoDienThoai": "0348901234",
+    "__v": 0
+  },
+  {
+    "_id": "67b2ba44016f8bd892a14aff",
+    "MSNV": "NV0011",
+    "HoTenNV": "Bùi Hữu Khoa",
+    "Password": "B@u1khoa123",
+    "ChucVu": "Nhân Viên",
+    "DiaChi": "4/2 Mậu Thân, Cần Thơ",
+    "SoDienThoai": "0356789123",
+    "__v": 0
+  },
+  {
+    "_id": "67b2ba44016f8bd892a14b00",
+    "MSNV": "NV0012",
+    "HoTenNV": "Nguyễn Hữu Nam",
+    "Password": "N!am2024@#",
+    "ChucVu": "Nhân Viên",
+    "DiaChi": "13/4 Trần Bình Trọng, Cần Thơ",
+    "SoDienThoai": "0376543210",
+    "__v": 0
+  },
+  {
+    "_id": "67b2ba44016f8bd892a14b01",
+    "MSNV": "NV0013",
+    "HoTenNV": "Lê Thị Thu Hà",
+    "Password": "ThuH@_#2024",
+    "ChucVu": "Giám Đốc",
+    "DiaChi": "20 Nguyễn Thị Minh Khai, Cần Thơ",
+    "SoDienThoai": "0347856142",
+    "__v": 0
+  },
+  {
+    "_id": "67b2ba44016f8bd892a14b02",
+    "MSNV": "NV0014",
+    "HoTenNV": "Trần Văn Quân",
+    "Password": "Tr@Qun@2024",
+    "ChucVu": "Nhân Viên",
+    "DiaChi": "8/6 Trường Chinh, Cần Thơ",
+    "SoDienThoai": "0398765432",
+    "__v": 0
+  },
+  {
+    "_id": "67b2ba44016f8bd892a14b03",
+    "MSNV": "NV0015",
+    "HoTenNV": "Phạm Ngọc Duy",
+    "Password": "N@9ocDuy!2",
+    "ChucVu": "Nhân Viên",
+    "DiaChi": "25 Võ Văn Kiệt, Cần Thơ",
+    "SoDienThoai": "0345678910",
+    "__v": 0
+  }
+]
