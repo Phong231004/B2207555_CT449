@@ -27,7 +27,6 @@ app.use('/api/reader', readerRoutes);
 app.use('/api/publisher', publisherRoutes);
 app.use('/api/transactions', transactionRoutes);
 app.use('/api', borrowerDetailsRoutes);  // Thêm route mới vào
-
 // Cung cấp file HTML cho thêm dữ liệu
 app.get('/Enter_additional_code/Enter_additionail_book_code', (req, res) => {
   res.sendFile(__dirname + '/public/Enter_additional_code/Enter_additionail_book_code.html');  // Đảm bảo đường dẫn đúng tới file index.html
@@ -41,11 +40,14 @@ app.get('/Enter_additional_code/Enter_additionail_reader_code', (req, res) => {
 app.get('/Enter_additional_code/Enter_additionail_publisher_code', (req, res) => {
   res.sendFile(__dirname + '/public/Enter_additional_code/Enter_additionail_publisher_code.html');  // Đảm bảo đường dẫn đúng tới file index.html
 });
-app.get('/Enter_additional_code/Manage_readers_borrowing_books', (req, res) => {
+app.get('/Manage_readers_borrowing_books', (req, res) => {
   res.sendFile(__dirname + '/public/Manage_readers_borrowing_books/Manage_readers_borrowing_books.html');  // Đảm bảo đường dẫn đúng tới file index.html
 });
-app.get('/Enter_additional_code/All_book_lending_information', (req, res) => {
+app.get('/All_book_lending_information', (req, res) => {
   res.sendFile(__dirname + '/public/All_book_lending_information/all book lending information.html');
+});
+app.get('/Reader_function_management_page/ReaderLogin', (req, res) => {
+  res.sendFile(__dirname + '/public/Reader_function_management_page/Login.html');
 });
 
 // Port

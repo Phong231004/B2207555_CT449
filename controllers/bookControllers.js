@@ -47,3 +47,15 @@ module.exports.getAllBooks = async (req, res) => {
 module.exports.findOne = async (query) => {
   return await Book.findOne(query);
 }
+// Kiểm tra mã sách
+module.exports.checkBookCode = async (req, res) => {
+  try {
+    const book = await bookController.findOne({ MASACH: req.params.MASACH });
+    if (!book) {
+      return res.status(404).json({ message: 'Sách không tồn tại!' });
+    }
+    res.json(book);
+  } catch (error) {
+    res.status(500).json({ message: 'Lỗi khi tìm kiếm sách!' });
+  }
+}

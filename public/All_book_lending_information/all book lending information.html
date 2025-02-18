@@ -4,43 +4,90 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Thông Tin Người Mượn Sách</title>
+  <!-- Liên kết Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-  <div class="container mt-5">
-    <h1 class="text-center">Thông Tin Người Mượn Sách</h1>
-    <form id="readerForm" class="mb-3">
-      <div class="mb-3">
-        <label for="MADOCGIA" class="form-label">Mã Đọc Giả:</label>
-        <input type="text" id="MADOCGIA" name="MADOCGIA" class="form-control" required>
-      </div>
-      <button type="submit" class="btn btn-primary">Tìm Thông Tin</button>
-    </form>
+  
+  <style>
+    /* Thêm một chút hiệu ứng chuyển động và bóng mờ */
+    .form-control:focus {
+      border-color: #007bff;
+      box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
+    }
 
-    <div id="borrowerInfo" style="display: none;">
-      <h3>Danh Sách Mượn Sách</h3>
-      <table class="table table-striped">
+    .btn-primary:hover {
+      background-color: #0056b3;
+      border-color: #004085;
+    }
+
+    .card {
+      border-radius: 15px;
+    }
+
+    .table th, .table td {
+      vertical-align: middle;
+    }
+
+    /* Hiệu ứng khi hover vào bảng */
+    .table-hover tbody tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    /* Hiệu ứng shadow cho các phần tử */
+    .card, .table, .btn {
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .table-hover tbody tr:hover {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body class="bg-light">
+
+  <div class="container mt-5">
+    <div class="card shadow-sm">
+      <div class="card-header text-center">
+        <h4>Thông Tin Người Mượn Sách</h4>
+      </div>
+      <div class="card-body">
+        <form id="readerForm">
+          <div class="mb-3">
+            <label for="MADOCGIA" class="form-label">Mã Đọc Giả:</label>
+            <input type="text" id="MADOCGIA" name="MADOCGIA" class="form-control" placeholder="Nhập mã đọc giả" required>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Tìm Thông Tin</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="borrowerInfo" class="mt-5" style="display: none;">
+      <h3 class="text-center">Danh Sách Mượn Sách</h3>
+      <table class="table table-hover table-striped table-bordered">
         <thead>
           <tr>
-            <th>Mã Đọc Giả</th>
+            <!-- <th>Mã Đọc Giả</th> -->
             <th>Họ Tên</th>
             <th>Ngày Sinh</th>
             <th>Giới Tính</th>
             <th>Địa Chỉ</th>
             <th>Điện Thoại</th>
-            <th>Mã Sách</th>
+            <!-- <th>Mã Sách</th> -->
             <th>Tên Sách</th>
             <th>Đơn Giá</th>
             <th>Số Quyển</th>
             <th>Năm Xuất Bản</th>
-            <th>Mã NXB</th>
+            <!-- <th>Mã NXB</th> -->
             <th>Tên NXB</th>
             <th>Tác Giả</th>
-            <th>Mã Nhân Viên</th>
+            <!-- <th>Mã Nhân Viên</th> -->
             <th>Họ Tên Nhân Viên</th>
             <th>Chức Vụ</th>
-            <th>Địa Chỉ Nhân Viên</th>
-            <th>Số Điện Thoại Nhân Viên</th>
+            <!-- <th>Địa Chỉ Nhân Viên</th> -->
+            <!-- <th>Số Điện Thoại Nhân Viên</th> -->
           </tr>
         </thead>
         <tbody id="borrowerTable"></tbody>
@@ -55,36 +102,35 @@
       const MADOCGIA = document.getElementById('MADOCGIA').value;
       
       try {
-        const response = await fetch(`/api/borrower-details?MADOCGIA=${MADOCGIA}`); // Sửa API URL
+        const response = await fetch(`/api/borrower-details?MADOCGIA=${MADOCGIA}`);
         if (response.ok) {
           const data = await response.json();
           
           // Hiển thị bảng thông tin người mượn sách
           const borrowerTable = document.getElementById('borrowerTable');
           borrowerTable.innerHTML = '';
-          
+
           data.forEach(item => {
             const row = borrowerTable.insertRow();
             row.innerHTML = `
-              <td>${item.MADOCGIA}</td>
+              
               <td>${item.HOTEN}</td>
               <td>${new Date(item.NGAYSINH).toLocaleDateString()}</td>
               <td>${item.PHAI}</td>
               <td>${item.DIACHI}</td>
               <td>${item.DIENTHOAI}</td>
-              <td>${item.MASACH}</td>
+
               <td>${item.TENSACH}</td>
               <td>${item.DONGIA}</td>
               <td>${item.SOQUYEN}</td>
               <td>${item.NAMXUATBAN}</td>
-              <td>${item.MANXB}</td>
+
               <td>${item.TENNXB}</td>
               <td>${item.TACGIA}</td>
-              <td>${item.MSNV}</td>
+
               <td>${item.HOTENNV}</td>
               <td>${item.CHUCVU}</td>
-              <td>${item.DIACHI_NV}</td>
-              <td>${item.SODIENTHOAI}</td>
+
             `;
           });
 

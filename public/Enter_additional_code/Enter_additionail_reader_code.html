@@ -58,7 +58,6 @@
         <tr>
           <th>MÃ ĐỌC GIẢ</th>
           <th>HỌ VÀ TÊN</th>
-          <!-- <th>TÊN</th> -->
           <th>NGÀY SINH</th>
           <th>GIỚI TÍNH</th>
           <th>ĐỊA CHỈ</th>
@@ -78,18 +77,31 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Thêm thư viện SheetJS để xuất chức năng Excel -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.1/xlsx.full.min.js"></script>
+
   <script>
+    // Hàm tạo mật khẩu ngẫu nhiên có độ dài chính xác 8 ký tự
+    function generateRandomPassword() {
+      const charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+[]{}|;:,.<>?";
+      let password = "";
+      // Đảm bảo rằng mật khẩu có đúng 8 ký tự
+      for (let i = 0; i < 8; i++) {
+        const randomIndex = Math.floor(Math.random() * charset.length);
+        password += charset[randomIndex];
+      }
+      return password;
+    }
+
     const form = document.getElementById('readerForm');
-    const readerTable = document.getElementById('readerTable');  // Sửa id
+    const readerTable = document.getElementById('readerTable');  
 
     // Hàm để tải danh sách đọc giả và hiển thị bảng
     async function loadReader() {
       try {
-        const response = await fetch('/api/reader'); // Lấy danh sách từ API
+        const response = await fetch('/api/reader');
         if (response.ok) {
-          const readers = await response.json(); // Dữ liệu đọc giả
-          readerTable.innerHTML = ''; // Xóa bảng cũ
-          readers.forEach(reader => {  // Sửa biến từ staff thành reader
+          const readers = await response.json();
+          readerTable.innerHTML = '';
+          readers.forEach(reader => {
             const row = readerTable.insertRow();
             row.innerHTML = `
               <td>${reader.MADOCGIA}</td>
@@ -109,22 +121,28 @@
       }
     }
 
-    // Gọi hàm loadReader khi tải trang
     loadReader();
 
     // Xử lý sự kiện submit form
     form.addEventListener('submit', async function (event) {
-      event.preventDefault(); // Dừng gửi form mặc định
+      event.preventDefault(); 
+
+      // Tạo mật khẩu ngẫu nhiên với độ dài chính xác 8 ký tự
+      const password = generateRandomPassword();
+
       const formData = new FormData(form);
       const readerData = {
         MADOCGIA: formData.get('MADOCGIA'),
         HOLOT: formData.get('HOLOT'),
         TEN: formData.get('TEN'),
+        PASSWORD: password,  // Thêm mật khẩu ngẫu nhiên vào dữ liệu
         NGAYSINH: formData.get('NGAYSINH'),
         PHAI: formData.get('PHAI'),
         DIACHI: formData.get('DIACHI'),
         DIENTHOAI: formData.get('DIENTHOAI'),
       };
+
+      console.log('Mật khẩu mới:', password);
 
       try {
         const response = await fetch('/api/reader', {
@@ -137,7 +155,7 @@
 
         if (response.ok) {
           alert('Đọc giả đã được tạo thành công!');
-          loadReader(); // Tải lại danh sách sau khi thêm
+          loadReader();
         } else {
           const errorData = await response.json();
           alert('Lỗi khi tạo đọc giả: ' + errorData.message);
